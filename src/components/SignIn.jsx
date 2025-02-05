@@ -61,10 +61,7 @@ const SignIn = () => {
         </div>
         <button type="submit">Sign In</button>
       </form>
-      <div className="social-buttons">
-        <button className="google-btn">Continue with Google</button>
-        <button className="apple-btn">Continue with Apple</button>
-      </div>
+
       <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>
     </div>
   );

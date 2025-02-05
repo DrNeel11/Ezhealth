@@ -7,6 +7,7 @@ import MedicalScans from './components/MedicalScans';
 import ScanDetails from './components/ScanDetails';
 import UploadSpecimen from './components/UploadSpecimen'; 
 
+
 function App() {
   return (
     <Router>
