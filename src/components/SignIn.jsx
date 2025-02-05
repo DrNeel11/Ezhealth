@@ -18,10 +18,14 @@ const SignIn = () => {
     });
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    if (formData.email === 'user@example.com' && formData.password === 'password') {
+      navigate('/medical-scans'); // Redirect to Medical Scans page
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   const handleForgotPasswordClick = () => {
