@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './UploadSpecimen.css'; // Optional: Add styling for this component
+import './UploadSpecimen.css';
 
 const UploadSpecimen = () => {
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleFileSelect = (event) => {
+    const files = Array.from(event.target.files);
+    setSelectedFiles(files);
+  };
+
+  const handleBrowseClick = () => {
+    fileInputRef.current.click();
+  };
 
   return (
     <div className="upload-specimen-container">
@@ -12,7 +23,22 @@ const UploadSpecimen = () => {
         <div className="drag-drop-area">
           <p>Drag and drop your image here</p>
           <p>or</p>
-          <button>Browse Files</button>
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            onChange={handleFileSelect}
+            multiple // Remove this if you only want single file selection
+          />
+          <button onClick={handleBrowseClick}>Browse Files</button>
+          {selectedFiles.length > 0 && (
+            <div className="selected-files">
+              <p>Selected files:</p>
+              {selectedFiles.map((file, index) => (
+                <span key={index}>{file.name}</span>
+              ))}
+            </div>
+          )}
         </div>
         <div className="patient-details">
           <input type="text" placeholder="Enter patient name" />

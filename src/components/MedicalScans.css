@@ -1,78 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 .medical-scans-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .medical-scans-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .scans-section {
-    margin-bottom: 30px;
-  }
-  
-  .scans-section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .scan-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    cursor: pointer; /* Indicate that the item is clickable */
-  }
-  
-  .scan-item:hover {
-    background-color: #e9e9e9; /* Highlight on hover */
-  }
-  
-  .scan-name {
-    font-weight: bold;
-  }
-  
-  .scan-time {
-    color: #666;
-  }
-  
-  .scan-doctor {
-    color: #333;
-  }
-  
-  .navigation {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .navigation button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .navigation button:hover {
-    background-color: #0056b3;
-  }
-  .plus-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50%; /* Make it circular */
-    background-color: #007bff;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 10px; /* Add some spacing */
-  }
-  
-  .plus-button:hover {
-    background-color: #0056b3;
-  }
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.medical-scans-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-weight: 600;
+  text-align: center;
+}
+
+.scans-section {
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 800px;
+}
+
+.scans-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scan-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: white;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border-color: #007bff;
+}
+
+.scan-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #007bff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.scan-item:hover::before {
+  opacity: 1;
+}
+
+.scan-name {
+  font-weight: 500;
+  color: #1e293b;
+  font-size: 1.1rem;
+}
+
+.scan-time {
+  color: #64748b;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scan-doctor {
+  color: #475569;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.navigation button {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 123, 255, 0.2);
+}
+
+.navigation button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(0, 123, 255, 0.3);
+}
+
+.plus-button {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 123, 255, 0.2);
+}
+
+.plus-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px -1px rgba(0, 123, 255, 0.3);
+}
+
+/* Add status indicator */
+.scan-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-completed { background: #10b981; }
+.status-pending { background: #f59e0b; }
+.status-urgent { background: #ef4444; }
