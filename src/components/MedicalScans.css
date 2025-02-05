@@ -1,0 +1,78 @@
+.medical-scans-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .medical-scans-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .scans-section {
+    margin-bottom: 30px;
+  }
+  
+  .scans-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .scan-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer; /* Indicate that the item is clickable */
+  }
+  
+  .scan-item:hover {
+    background-color: #e9e9e9; /* Highlight on hover */
+  }
+  
+  .scan-name {
+    font-weight: bold;
+  }
+  
+  .scan-time {
+    color: #666;
+  }
+  
+  .scan-doctor {
+    color: #333;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .navigation button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navigation button:hover {
+    background-color: #0056b3;
+  }
+  .plus-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 10px; /* Add some spacing */
+  }
+  
+  .plus-button:hover {
+    background-color: #0056b3;
+  }
