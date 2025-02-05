@@ -1,0 +1,80 @@
+.signin-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .signin-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .signin-container p {
+    margin-bottom: 20px;
+  }
+  
+  .signin-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signin-container .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .signin-container .options label {
+    font-size: 14px;
+  }
+  
+  .signin-container .options a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signin-container .options a:hover {
+    text-decoration: underline;
+  }
+  
+  .signin-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .signin-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .social-buttons {
+    margin: 20px 0;
+  }
+  
+  .google-btn {
+    background-color: #db4437;
+  }
+  
+  .apple-btn {
+    background-color: #000;
+  }
+  
+  .signin-container span {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .signin-container span:hover {
+    text-decoration: underline;
+  }
