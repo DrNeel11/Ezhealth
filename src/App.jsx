@@ -6,6 +6,7 @@ import ForgotPassword from './components/ForgotPassword';
 import MedicalScans from './components/MedicalScans';
 import ScanDetails from './components/ScanDetails';
 import UploadSpecimen from './components/UploadSpecimen'; 
+import Analysis from './components/Analysis'; 
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/medical-scans" element={<MedicalScans />} /> {/* Home screen */}
         <Route path="/scan-details" element={<ScanDetails />} /> {/* Add this route */}
         <Route path="/upload-specimen" element={<UploadSpecimen />} /> {/* Add this route */}
+        <Route path="/analysis" element={<Analysis />} /> {/* Add this route */}
       </Routes>
     </Router>
   );

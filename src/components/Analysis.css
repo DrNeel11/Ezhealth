@@ -1,0 +1,126 @@
+.analysis-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header (Top Bar) */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .share-case-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .share-case-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .notification-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Main Section (Split View) */
+  .main-section {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Left Side: Image Display Panel */
+  .image-panel {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .image-controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .image-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .image-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Right Side: AI Results Panel */
+  .ai-results-panel {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .ai-results-panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .ai-confidence-score,
+  .detected-anomalies,
+  .cell-density,
+  .heatmap {
+    margin-bottom: 20px;
+  }
+  
+  .detected-anomalies ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .heatmap img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Go Back Button */
+  .go-back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .go-back-button:hover {
+    background-color: #0056b3;
+  }

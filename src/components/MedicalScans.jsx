@@ -48,6 +48,10 @@ const MedicalScans = () => {
     navigate('/upload-specimen'); // Navigate to the Upload Specimen page
   };
 
+  const handleAnalysisClick = () => {
+    navigate('/analysis'); // Navigate to the Analysis page
+  };
+
   return (
     <div className="medical-scans-container">
       <h1>Medical Scans</h1>
@@ -91,7 +95,7 @@ const MedicalScans = () => {
         <button className="plus-button" onClick={handleUploadClick}>
           +
         </button>
-        <button>Analysis</button>
+        <button onClick={handleAnalysisClick}>Analysis</button>
         <button>Settings</button>
       </div>
     </div>
