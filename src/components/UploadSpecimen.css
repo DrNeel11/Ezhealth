@@ -116,6 +116,13 @@
   accent-color: #007bff;
 }
 
+
+.action-buttons{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
 button {
   margin-top: 1.5rem;
   padding: 0.9rem 2rem;
@@ -125,6 +132,8 @@ button {
   font-weight: 500;
   border: none;
   cursor: pointer;
+  gap: 0.5rem;
+  justify-content: center;
   transition: all 0.2s ease;
 }
 
@@ -151,6 +160,14 @@ button:hover {
   border-radius: 6px;
   margin: 0.5rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.selected-files span {
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .file-icon {

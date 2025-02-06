@@ -1,44 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MedicalScans.css';
 
 const MedicalScans = () => {
   const navigate = useNavigate();
+  const [recentScans, setRecentScans] = useState([]);
+  const [monthlyScans, setMonthlyScans] = useState([]);
 
-  // Example scan data for Recent Scans
-  const recentScans = [
-    {
-      id: 1,
-      name: 'Cancer-1',
-      type: 'Breast Cancer',
-      patientName: 'Jane Doe',
-      severity: 'Moderate',
-      date: '2h ago',
-      doctor: 'Dr. Sarah Johnson',
-    },
-    {
-      id: 2,
-      name: 'Cancer-2',
-      type: 'Lung Cancer',
-      patientName: 'John Smith',
-      severity: 'High',
-      date: 'Yesterday',
-      doctor: 'Dr. Michael Chen',
-    },
-  ];
-
-  // Example scan data for Monthly Scans
-  const monthlyScans = [
-    {
-      id: 3,
-      name: 'Monthly Checkup',
-      type: 'Routine Checkup',
-      patientName: 'Alice Brown',
-      severity: 'Low',
-      date: 'Last Month',
-      doctor: 'Dr. Emily Davis',
-    },
-  ];
+  // Load scans from localStorage on component mount
+  useEffect(() => {
+    const savedScans = JSON.parse(localStorage.getItem('scans')) || [];
+    setRecentScans(savedScans); // Set all scans as recent scans for simplicity
+  }, []);
 
   const handleScanClick = (scan) => {
     navigate('/scan-details', { state: { scan } }); // Pass scan data to the details page
