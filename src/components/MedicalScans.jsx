@@ -24,6 +24,10 @@ const MedicalScans = () => {
   const handleAnalysisClick = () => {
     navigate('/analysis'); // Navigate to the Analysis page
   };
+  
+  const handleSettingsClick = () => {
+    navigate('/settings'); // Navigate to the Settings page
+  };
 
   return (
     <div className="medical-scans-container">
@@ -69,7 +73,7 @@ const MedicalScans = () => {
           +
         </button>
         <button onClick={handleAnalysisClick}>Analysis</button>
-        <button>Settings</button>
+        <button onClick={handleSettingsClick}>Settings</button>
       </div>
     </div>
   );
