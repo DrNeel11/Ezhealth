@@ -9,12 +9,9 @@ const Analysis = () => {
     <div className="analysis-container">
       {/* Header (Top Bar) */}
       <div className="header">
-        <div className="breadcrumb">
-          <span>Home</span> &gt; <span>Cases</span> &gt; <span>AI Analysis</span>
-        </div>
         <div className="header-actions">
           <button className="share-case-button">Share Case</button>
-          <div className="notification-icon">🔔</div>
+          <button className="download-button">Download</button>
         </div>
       </div>
 
