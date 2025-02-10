@@ -22,7 +22,7 @@
     "vite": "^4.2.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5500",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
