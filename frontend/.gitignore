@@ -1,6 +1,22 @@
-node_modules/
+# Virtual Environment
+venv/
 .env
-.DS_Store
-build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE
+.vscode/
+.idea/
+
+# Distribution / packaging
 dist/
-.cache/
+build/
+*.egg-info/
+
+# Local development settings
+.env.local
+.env.development.local

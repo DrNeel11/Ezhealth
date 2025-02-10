@@ -7,6 +7,7 @@ import MedicalScans from './components/MedicalScans';
 import ScanDetails from './components/ScanDetails';
 import UploadSpecimen from './components/UploadSpecimen'; 
 import Analysis from './components/Analysis'; 
+import api from './api';
 
 
 function App() {
