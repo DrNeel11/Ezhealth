@@ -10,6 +10,7 @@
   background: #0a0a0a;
   color: #ffffff;
   padding-bottom: 80px; /* Space for the bottom nav bar */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .upload-specimen-container h1 {
