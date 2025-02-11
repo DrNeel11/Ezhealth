@@ -1,0 +1,29 @@
+.reports-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffffff;
+    padding-bottom: 60px; /* Space for the bottom nav bar */
+  }
+  
+  .reports-title {
+    font-size: 32px;
+    color: #007bff; /* Blue color */
+    margin-bottom: 20px;
+  }
+  
+  .reports-description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .reports-list {
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+  }

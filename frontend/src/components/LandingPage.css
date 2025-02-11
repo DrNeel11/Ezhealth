@@ -1,0 +1,28 @@
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .landing-page-container:hover {
+    background-color: #e0e7ef;
+  }
+  
+  .landing-title {
+    font-size: 36px;
+    color: #007bff; /* Blue color */
+    margin-bottom: 10px;
+  }
+  
+  .landing-catchphrase {
+    font-size: 18px;
+    color: #555;
+  }

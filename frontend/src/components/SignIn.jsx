@@ -18,11 +18,11 @@ const SignIn = () => {
     });
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.email === 'user@example.com' && formData.password === 'password') {
-      navigate('/medical-scans'); // Redirect to Medical Scans page
+      localStorage.setItem('isAuthenticated', 'true'); // Set authentication status
+      navigate('/home'); // Redirect to Home page
     } else {
       alert('Invalid credentials');
     }

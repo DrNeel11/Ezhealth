@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Analysis.css'; // We'll create this CSS file next
+import './Analysis.css'; // Import the CSS file for styling
+import BottomNavBar from './BottomNavBar'; // Import BottomNavBar component
 
 const Analysis = () => {
   const navigate = useNavigate();
@@ -59,6 +60,8 @@ const Analysis = () => {
       <button className="go-back-button" onClick={() => navigate(-1)}>
         Go Back
       </button>
+
+      <BottomNavBar /> {/* Add BottomNavBar component */}
     </div>
   );
 };
