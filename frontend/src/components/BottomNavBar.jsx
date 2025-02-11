@@ -11,6 +11,9 @@ const BottomNavBar = () => {
       <NavLink to="/reports" className="nav-link" activeClassName="active">
         Reports
       </NavLink>
+      <NavLink to="/upload-specimen" className="nav-link" activeClassName="active">
+        +
+      </NavLink>
       <NavLink to="/analysis" className="nav-link" activeClassName="active">
         Analysis
       </NavLink>

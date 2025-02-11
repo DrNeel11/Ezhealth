@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BottomNavBar from './BottomNavBar';
 import './UploadSpecimen.css';
 
 const UploadSpecimen = () => {
@@ -45,7 +46,7 @@ const UploadSpecimen = () => {
     const updatedScans = [newScan, ...existingScans];
     localStorage.setItem('scans', JSON.stringify(updatedScans));
 
-    navigate('/medical-scans');
+    navigate('/home');
   };
 
   return (
@@ -132,6 +133,7 @@ const UploadSpecimen = () => {
           Submit
         </button>
       </div>
+      <BottomNavBar />
     </div>
   );
 };
