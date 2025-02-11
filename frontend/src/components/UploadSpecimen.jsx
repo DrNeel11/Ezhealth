@@ -1,53 +1,66 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import BottomNavBar from './BottomNavBar';
 import './UploadSpecimen.css';
 
 const UploadSpecimen = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [patientName, setPatientName] = useState('');
   const [patientID, setPatientID] = useState('');
   const [gender, setGender] = useState('');
   const [specimenType, setSpecimenType] = useState('');
+  const [uploadStatus, setUploadStatus] = useState('');
 
   const handleFileSelect = (event) => {
-    const files = Array.from(event.target.files).filter((file) =>
-      file.type === "image/jpeg" || file.type === "image/png"
-    );
+    const file = event.target.files[0];
+    if (!file) return;
 
-    if (files.length === 0) {
+    if (file.type !== "image/jpeg" && file.type !== "image/png") {
       alert("Only JPG and PNG image files are allowed!");
       return;
     }
-
-    setSelectedFiles(files);
+    setSelectedFile(file);
   };
 
   const handleBrowseClick = () => {
     fileInputRef.current.click();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    try {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('patientName', patientName);
+      formData.append('patientID', patientID);
+      formData.append('gender', gender);
+      formData.append('specimenType', specimenType);
 
-    const newScan = {
-      id: Date.now(),
-      name: `Scan-${selectedFiles[0].name}`,
-      type: specimenType,
-      patientName: patientName,
-      severity: 'Pending',
-      date: 'Just now',
-      doctor: 'Dr. Uploader',
-    };
+      const response = await fetch('http://127.0.0.1:8000/images/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: formData
+      });
 
-    const existingScans = JSON.parse(localStorage.getItem('scans')) || [];
-    const updatedScans = [newScan, ...existingScans];
-    localStorage.setItem('scans', JSON.stringify(updatedScans));
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Upload failed');
+      }
 
-    navigate('/home');
-  };
+      const data = await response.json();
+      setUploadStatus('success');
+      navigate('/analysis', { state: { imageData: data } });
+    } catch (error) {
+      setUploadStatus('error');
+      console.error('Upload error:', error);
+    }
+};
 
   return (
     <div className="upload-specimen-container">
@@ -62,15 +75,11 @@ const UploadSpecimen = () => {
             ref={fileInputRef}
             style={{ display: 'none' }}
             onChange={handleFileSelect}
-            multiple
           />
           <button onClick={handleBrowseClick}>Browse Files</button>
-          {selectedFiles.length > 0 && (
+          {selectedFile && (
             <div className="selected-files">
-              <p>Selected files:</p>
-              {selectedFiles.map((file, index) => (
-                <span key={index}>{file.name}</span>
-              ))}
+              <p>Selected file: {selectedFile.name}</p>
             </div>
           )}
         </div>
@@ -80,12 +89,14 @@ const UploadSpecimen = () => {
             placeholder="Enter patient name"
             value={patientName}
             onChange={(e) => setPatientName(e.target.value)}
+            required
           />
           <input
             type="text"
             placeholder="Enter patient ID"
             value={patientID}
             onChange={(e) => setPatientID(e.target.value)}
+            required
           />
           <div className="gender-selection">
             <label>
@@ -94,8 +105,7 @@ const UploadSpecimen = () => {
                 name="gender"
                 value="male"
                 onChange={(e) => setGender(e.target.value)}
-              />{' '}
-              Male
+              /> Male
             </label>
             <label>
               <input
@@ -103,8 +113,7 @@ const UploadSpecimen = () => {
                 name="gender"
                 value="female"
                 onChange={(e) => setGender(e.target.value)}
-              />{' '}
-              Female
+              /> Female
             </label>
             <label>
               <input
@@ -112,13 +121,13 @@ const UploadSpecimen = () => {
                 name="gender"
                 value="other"
                 onChange={(e) => setGender(e.target.value)}
-              />{' '}
-              Other
+              /> Other
             </label>
           </div>
           <select
             value={specimenType}
             onChange={(e) => setSpecimenType(e.target.value)}
+            required
           >
             <option value="">Select specimen type</option>
             <option value="blood">Blood</option>
@@ -128,10 +137,11 @@ const UploadSpecimen = () => {
         </div>
       </div>
       <div className="action-buttons">
-        <button onClick={handleSubmit} disabled={!selectedFiles.length}>
+        <button onClick={handleSubmit} disabled={!selectedFile}>
           Submit
         </button>
       </div>
+      {uploadStatus && <p>{uploadStatus}</p>}
       <BottomNavBar />
     </div>
   );

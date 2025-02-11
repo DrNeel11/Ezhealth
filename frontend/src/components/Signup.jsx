@@ -10,6 +10,7 @@ const Signup = () => {
     password: '',
   });
 
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,12 +21,36 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setError('');
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/auth/signup', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.detail || 'Signup failed');
+      }
+
+      console.log('Signup successful:', data);
+      alert('Signup successful!');
+      navigate('/signin');
+    } catch (error) {
+      console.error('Signup error:', error);
+      setError(error.message || 'An error occurred during signup');
+    }
   };
 
+  
   const handleSignInClick = () => {
     navigate('/signin');
   };
@@ -34,6 +59,7 @@ const Signup = () => {
     <div className="signup-container">
       <h2>Create account</h2>
       <p>Join us and start exploring</p>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -70,7 +96,7 @@ const Signup = () => {
         <label>
           <input type="checkbox" required /> I agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>
         </label>
-        <button type="submit">Create account</button>
+        <button type="submit" onClick={handleSubmit}>Create account</button>
       </form>
       <p>Already have an account? <span onClick={handleSignInClick}>Sign in</span></p>
     </div>

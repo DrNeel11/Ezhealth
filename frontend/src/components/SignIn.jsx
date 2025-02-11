@@ -8,6 +8,7 @@ const SignIn = () => {
     password: '',
   });
 
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,15 +19,32 @@ const SignIn = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.email === 'user@example.com' && formData.password === 'password') {
-      localStorage.setItem('isAuthenticated', 'true'); // Set authentication status
-      navigate('/home'); // Redirect to Home page
-    } else {
-      alert('Invalid credentials');
+    setError('');
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/auth/login', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || 'Login failed');
+      }
+
+      // Store the access token
+      localStorage.setItem('token', data.access_token);
+      navigate('/home');
+    } catch (error) {
+      setError(error.message || 'An error occurred during sign in');
     }
-  };
+};
 
   const handleForgotPasswordClick = () => {
     navigate('/forgot-password');
@@ -36,6 +54,7 @@ const SignIn = () => {
     <div className="signin-container">
       <h2>Welcome back</h2>
       <p>Sign in to continue your journey</p>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -61,7 +80,6 @@ const SignIn = () => {
         </div>
         <button type="submit">Sign In</button>
       </form>
-
       <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>
     </div>
   );
