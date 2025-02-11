@@ -1,19 +1,18 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from config.settings import settings
+from fastapi import Depends
 
-class Database:
-    client: AsyncIOMotorClient = None
-    db = None
+# MongoDB connection settings
+MONGO_URI = "mongodb://localhost:27017"
+DB_NAME = "EzHealth"
 
-    @classmethod
-    async def connect_db(cls):
-        cls.client = AsyncIOMotorClient(settings.MONGODB_URL)
-        cls.db = cls.client[settings.DB_NAME]
-        
-    @classmethod
-    async def close_db(cls):
-        cls.client.close()
+# Configure MongoDB client
+client = AsyncIOMotorClient(MONGO_URI)
+db = client[DB_NAME]
 
-    @classmethod
-    def get_collection(cls, collection_name: str):
-        return cls.db[collection_name]
+async def get_db():
+    try:
+        await client.admin.command('ping')
+        return db
+    except Exception as e:
+        print(f"Database connection error: {e}")
+        raise
