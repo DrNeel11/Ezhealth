@@ -128,7 +128,6 @@ const UploadSpecimen = () => {
         </div>
       </div>
       <div className="action-buttons">
-        <button onClick={() => navigate(-1)}>Go Back</button>
         <button onClick={handleSubmit} disabled={!selectedFiles.length}>
           Submit
         </button>

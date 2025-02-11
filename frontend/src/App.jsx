@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Signup from './components/Signup';
 import SignIn from './components/SignIn';
 import ForgotPassword from './components/ForgotPassword';
-import MedicalScans from './components/MedicalScans';
 import ScanDetails from './components/ScanDetails';
 import UploadSpecimen from './components/UploadSpecimen'; 
 import Analysis from './components/Analysis'; 
@@ -22,7 +21,6 @@ function App() {
         <Route path="/home" element={<PrivateRoute element={Home} />} /> {/* Home page */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/medical-scans" element={<PrivateRoute element={MedicalScans} />} /> {/* Home screen */}
         <Route path="/scan-details" element={<PrivateRoute element={ScanDetails} />} /> {/* Add this route */}
         <Route path="/upload-specimen" element={<PrivateRoute element={UploadSpecimen} />} /> {/* Add this route */}
         <Route path="/analysis" element={<PrivateRoute element={Analysis} />} /> {/* Add this route */}

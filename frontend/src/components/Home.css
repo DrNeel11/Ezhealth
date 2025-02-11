@@ -1,71 +1,142 @@
-.home-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffffff;
-    padding-bottom: 60px; /* Space for the bottom nav bar */
-  }
-  
-  .home-title {
-    font-size: 32px;
-    color: #007bff; /* Blue color */
-    margin-bottom: 20px;
-  }
-  
-  .home-description {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 20px;
-  }
-  
-  .home-categories, .recent-scans, .share-scans {
-    text-align: left;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-  }
-  
-  .home-categories h2, .recent-scans h2, .share-scans h2 {
-    font-size: 24px;
-    color: #333;
-    margin-top: 20px;
-  }
-  
-  .home-categories ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  
-  .home-categories li {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  .scans-section {
-    width: 100%;
-    background: white;
-    padding: 1.2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .scans-section:hover {
-    transform: scale(1.02);
-  }
-  
-  .scans-section h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #334155;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+.home-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #2b4141, #084983);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Chrome, Safari */
+  -webkit-text-fill-color: transparent; 
+  text-align: center; /* Optional: Centering text */
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05em;
+}
+
+
+.home-description {
+  font-size: 1.25rem;
+  color: #a0a0a0;
+  max-width: 800px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.grid-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background: #151515;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(45deg, #1a1a1a, #151515);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-content {
+  color: #8a8a8a;
+  line-height: 1.6;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #151515;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8a8a8a;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #4facfe;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Glow effects */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(45deg, #00f2fe33, #4facfe33);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}

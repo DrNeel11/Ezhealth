@@ -4,17 +4,10 @@ import './Analysis.css'; // Import the CSS file for styling
 import BottomNavBar from './BottomNavBar'; // Import BottomNavBar component
 
 const Analysis = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="analysis-container">
       {/* Header (Top Bar) */}
-      <div className="header">
-        <div className="header-actions">
-          <button className="share-case-button">Share Case</button>
-          <button className="download-button">Download</button>
-        </div>
-      </div>
+      <h1 className="analysis-head">Analysis</h1>
 
       {/* Main Section (Split View) */}
       <div className="main-section">
@@ -55,13 +48,12 @@ const Analysis = () => {
           </div>
         </div>
       </div>
-
-      {/* Go Back Button */}
-      <button className="go-back-button" onClick={() => navigate(-1)}>
-        Go Back
-      </button>
-
-      <BottomNavBar /> {/* Add BottomNavBar component */}
+      <div className="share-download-container">
+        <button className="share-case-button">Share Case</button>
+        <button className="download-button">Download</button>
+      </div>
+      {/* Bottom Navigation */}
+      <BottomNavBar/>
     </div>
   );
 };
