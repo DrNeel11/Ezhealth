@@ -26,7 +26,6 @@ export const uploadImage = async (file) => {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
-
   return response.data;
 };
 

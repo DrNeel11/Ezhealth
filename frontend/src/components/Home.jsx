@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import BottomNavBar from "./BottomNavBar";
 import "./Home.css";
 
 const Home = () => {
-
   return (
     <div className="home-page-container">
       <h1 className="home-title">Welcome to EzHealth</h1>
@@ -30,8 +29,6 @@ const Home = () => {
           <p className="card-content">Generate and manage patient reports efficiently.</p>
         </div>
       </div>
-
-
 
       {/* Bottom Navigation */}
       <BottomNavBar />
