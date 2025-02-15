@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../api";
-import "./SignIn.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../api';
+import './SignIn.css';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,9 @@ const SignIn = () => {
     setError('');
 
     try {
-      await login(formData);
+      const response = await login(formData);
+      localStorage.setItem('token', response.access_token);
+      localStorage.setItem('email', formData.email);
       navigate('/home'); // Navigate to the home page
     } catch (error) {
       setError(error.message || 'An error occurred during sign in');

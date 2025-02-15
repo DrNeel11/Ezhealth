@@ -71,6 +71,8 @@ const Settings = () => {
     const config = { headers: { Authorization: `Bearer ${token}` } };
     await axios.put(`${API_URL}/settings/profile`, profile, config);
     alert('Profile updated');
+    // Update localStorage with new email
+    localStorage.setItem('email', profile.email);
   };
 
   const handleNotificationSubmit = async (e) => {
@@ -83,6 +85,10 @@ const Settings = () => {
 
   const handleDoneClick = () => {
     navigate('/home'); // Navigate to the home page
+  };
+
+  const handleSignOutClick = () => {
+    navigate('/signout'); // Navigate to the sign-out page
   };
 
   return (
@@ -159,6 +165,7 @@ const Settings = () => {
       </form>
 
       <button className="done-button" onClick={handleDoneClick}>Done</button>
+      <button className="signout-button" onClick={handleSignOutClick}>Sign Out</button>
     </div>
   );
 };

@@ -70,3 +70,18 @@ button:hover {
 .done-button:hover {
   background-color: #218838;
 }
+
+.signout-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signout-button:hover {
+  background-color: #c82333;
+}

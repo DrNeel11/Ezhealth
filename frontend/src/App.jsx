@@ -10,6 +10,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home'; 
 import Reports from './components/Reports'; // Import Reports component
 import Settings from './components/Settings'; // Import Settings component
+import SignOut from './components/SignOut'; // Import SignOut component
 import PrivateRoute from './components/PrivateRoute'; // Import PrivateRoute component
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/analysis" element={<PrivateRoute element={Analysis} />} /> {/* Add this route */}
         <Route path="/reports" element={<PrivateRoute element={Reports} />} /> {/* Add this route */}
         <Route path="/settings" element={<PrivateRoute element={Settings} />} /> {/* Add this route */}
+        <Route path="/signout" element={<SignOut />} /> {/* Add this route */}
         <Route path="*" element={<Navigate to="/signin" />} /> {/* Redirect to SignIn page */}
       </Routes>
     </Router>
