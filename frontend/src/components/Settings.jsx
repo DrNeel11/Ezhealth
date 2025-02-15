@@ -16,6 +16,11 @@ const Settings = () => {
     email: '',
   });
 
+  const [passwords, setPasswords] = useState({
+    current_password: '',
+    new_password: '',
+  });
+
   const [notificationSettings, setNotificationSettings] = useState({
     email_notifications: false,
     sms_notifications: false,
@@ -24,7 +29,6 @@ const Settings = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch current settings from the backend
     const fetchSettings = async () => {
       const token = localStorage.getItem('token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -52,6 +56,11 @@ const Settings = () => {
     setProfile({ ...profile, [name]: value });
   };
 
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setPasswords({ ...passwords, [name]: value });
+  };
+
   const handleNotificationChange = (e) => {
     const { name, checked } = e.target;
     setNotificationSettings({ ...notificationSettings, [name]: checked });
@@ -71,8 +80,15 @@ const Settings = () => {
     const config = { headers: { Authorization: `Bearer ${token}` } };
     await axios.put(`${API_URL}/settings/profile`, profile, config);
     alert('Profile updated');
-    // Update localStorage with new email
     localStorage.setItem('email', profile.email);
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    await axios.put(`${API_URL}/settings/password`, passwords, config);
+    alert('Password updated');
   };
 
   const handleNotificationSubmit = async (e) => {
@@ -84,11 +100,11 @@ const Settings = () => {
   };
 
   const handleDoneClick = () => {
-    navigate('/home'); // Navigate to the home page
+    navigate('/home');
   };
 
   const handleSignOutClick = () => {
-    navigate('/signout'); // Navigate to the sign-out page
+    navigate('/signout');
   };
 
   return (
@@ -139,6 +155,29 @@ const Settings = () => {
           />
         </label>
         <button type="submit">Update Profile</button>
+      </form>
+
+      <form onSubmit={handlePasswordSubmit}>
+        <h2>Change Password</h2>
+        <label>
+          Current Password:
+          <input
+            type="password"
+            name="current_password"
+            value={passwords.current_password}
+            onChange={handlePasswordChange}
+          />
+        </label>
+        <label>
+          New Password:
+          <input
+            type="password"
+            name="new_password"
+            value={passwords.new_password}
+            onChange={handlePasswordChange}
+          />
+        </label>
+        <button type="submit">Update Password</button>
       </form>
 
       <form onSubmit={handleNotificationSubmit}>
