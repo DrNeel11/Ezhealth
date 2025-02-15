@@ -1,104 +1,72 @@
 .settings-page-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
   padding: 20px;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
-  background: #0a0a0a;
-  color: #ffffff;
-  padding-bottom: 80px; /* Space for the bottom nav bar */
-  animation: fadeIn 0.5s ease-in-out;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Settings Title */
 .settings-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #00f2fe;
-  background: linear-gradient(45deg, #2b4141, #084983);
-  background-clip: text;
-  -webkit-background-clip: text; /* For Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
+  font-size: 2em;
   margin-bottom: 20px;
-}
-
-/* Settings Description */
-.settings-description {
-  font-size: 18px;
-  color: #b0b0b0;
-  max-width: 600px;
   text-align: center;
-  line-height: 1.6;
-  margin-bottom: 25px;
 }
 
-/* Settings Options Container */
-.settings-options {
-  text-align: left;
-  width: 100%;
-  max-width: 600px;
-  background: rgba(255, 255, 255, 0.05);
+form {
+  margin-bottom: 30px;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-/* Settings Section Titles */
-.settings-options h2 {
-  font-size: 22px;
-  font-weight: 600;
-  color: #ff7eb3;
-  margin-top: 20px;
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-/* Settings Description Text */
-.settings-options p {
-  font-size: 16px;
-  color: #d0d0d0;
-  margin-top: 8px;
+label {
+  display: block;
+  margin-bottom: 10px;
 }
 
-/* Settings Button */
-.settings-button {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #ff7eb3, #ff5e62);
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #333; /* Dark background for input fields */
+  color: white; /* White text for input fields */
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  box-shadow: 0 4px 10px rgba(255, 94, 98, 0.3);
 }
 
-.settings-button:hover {
-  background: linear-gradient(135deg, #ff5e62, #ff3e4d);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 94, 98, 0.4);
+button:hover {
+  background-color: #0056b3;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .settings-title {
-      font-size: 28px;
-  }
+.done-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .settings-description {
-      font-size: 16px;
-  }
-
-  .settings-options {
-      padding: 15px;
-  }
-
-  .settings-button {
-      font-size: 14px;
-      padding: 10px 20px;
-  }
+.done-button:hover {
+  background-color: #218838;
 }
