@@ -12,18 +12,18 @@
   position: relative;
   animation: fadeIn 0.5s ease-in-out;
 }
+
 .home-title {
   font-size: 3.5rem;
   font-weight: 700;
   background: linear-gradient(45deg, #2b4141, #084983);
   background-clip: text;
   -webkit-background-clip: text; /* For Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  text-align: center; /* Optional: Centering text */
+  -webkit-text-fill-color: transparent;
+  text-align: center;
   margin-bottom: 1.5rem;
   letter-spacing: -0.05em;
 }
-
 
 .home-description {
   font-size: 1.25rem;
@@ -31,28 +31,33 @@
   max-width: 800px;
   line-height: 1.6;
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .grid-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
   margin-bottom: 3rem;
 }
 
+/* Feature Card */
 .feature-card {
   background: #151515;
   border-radius: 16px;
   padding: 2rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
   background: linear-gradient(45deg, #1a1a1a, #151515);
+  box-shadow: 0px 8px 20px rgba(0, 242, 254, 0.15);
 }
 
 .card-header {
@@ -76,6 +81,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.card-title:hover {
+  color: #4facfe;
 }
 
 .card-content {
@@ -83,6 +94,7 @@
   line-height: 1.6;
 }
 
+/* Bottom Navigation */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -106,7 +118,8 @@
   flex-direction: column;
   align-items: center;
   color: #8a8a8a;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .nav-item:hover {
@@ -118,7 +131,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* Glow effects */
+/* Glow Effect */
 .feature-card::after {
   content: '';
   position: absolute;
@@ -126,18 +139,33 @@
   border-radius: 16px;
   padding: 1px;
   background: linear-gradient(45deg, #00f2fe33, #4facfe33);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .feature-card:hover::after {
   opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-description {
+    font-size: 1.1rem;
+  }
+
+  .grid-section {
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
 }
