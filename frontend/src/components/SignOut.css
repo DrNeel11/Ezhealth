@@ -1,0 +1,12 @@
+.signout-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .signout-title {
+    font-size: 2em;
+    color: #343a40;
+  }

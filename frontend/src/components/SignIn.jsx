@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../api';
 import './SignIn.css';
 
 const SignIn = () => {
@@ -24,27 +25,14 @@ const SignIn = () => {
     setError('');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/auth/login', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.detail || 'Login failed');
-      }
-
-      // Store the access token
-      localStorage.setItem('token', data.access_token);
-      navigate('/home');
+      const response = await login(formData);
+      localStorage.setItem('token', response.access_token);
+      localStorage.setItem('email', formData.email);
+      navigate('/home'); // Navigate to the home page
     } catch (error) {
       setError(error.message || 'An error occurred during sign in');
     }
-};
+  };
 
   const handleForgotPasswordClick = () => {
     navigate('/forgot-password');
