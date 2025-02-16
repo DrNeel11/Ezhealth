@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import auth,image
+from image import router as image_router 
 
 app = FastAPI()
 
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(image.router, prefix="/images", tags=["Image Upload"])
+app.include_router(image_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,

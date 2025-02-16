@@ -1,9 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Analysis.css'; // Import the CSS file for styling
 import BottomNavBar from './BottomNavBar'; // Import BottomNavBar component
 
 const Analysis = () => {
+  const location = useLocation();
+  const { result } = location.state || {};
+
+  if (!result) {
+    return <p>No analysis data available.</p>;
+  }
+
   return (
     <div className="analysis-container">
       {/* Header (Top Bar) */}
@@ -14,7 +21,7 @@ const Analysis = () => {
         {/* Left Side: Image Display Panel */}
         <div className="image-panel">
           <div className="image-container">
-            <img src="https://via.placeholder.com/800x600" alt="Pathology Image" />
+            <img src={`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(result.heatmap)))}`} alt="Pathology Image" />
           </div>
           <div className="image-controls">
             <button>Zoom In</button>
@@ -30,21 +37,14 @@ const Analysis = () => {
         <div className="ai-results-panel">
           <h2>AI Results</h2>
           <div className="ai-confidence-score">
-            <strong>AI Confidence Score:</strong> 92%
+            <strong>AI Confidence Score:</strong> {result.confidence.toFixed(2)}%
           </div>
-          <div className="detected-anomalies">
-            <strong>Detected Anomalies:</strong>
-            <ul>
-              <li>Region A: High cell density</li>
-              <li>Region B: Abnormal morphology</li>
-            </ul>
-          </div>
-          <div className="cell-density">
-            <strong>Cell Density:</strong> 78 cells/mm²
+          <div className="predicted-subtype">
+            <strong>Predicted Subtype:</strong> {result.predicted_subtype}
           </div>
           <div className="heatmap">
             <strong>Heatmap Visualization:</strong>
-            <img src="https://via.placeholder.com/300x200" alt="Heatmap" />
+            <img src={`data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(result.heatmap)))}`} alt="Heatmap" />
           </div>
         </div>
       </div>

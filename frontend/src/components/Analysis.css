@@ -1,149 +1,102 @@
 .analysis-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
   padding: 20px;
-  font-family: 'Inter', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  background: #0a0a0a;
-  color: #ffffff;
-  padding-bottom: 80px; /* Space for the bottom nav bar */
-  animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header Styling */
-.analysis-head{
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(45deg, #2b4141, #084983);
-  background-clip: text;
-  -webkit-background-clip: text; /* For Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.05em;
+.analysis-head {
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
-
-/* Main Content Styling */
 .main-section {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-/* Image Panel */
 .image-panel {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  flex: 1;
+  margin-right: 20px;
+}
+
+.image-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  max-height: 500px;
 }
 
 .image-container img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Image Controls */
 .image-controls {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .image-controls button {
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #051b3d, #1f023f);
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .image-controls button:hover {
-  background: linear-gradient(135deg, #051b3d, #1f023f);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(2, 7, 49, 0.3);
+  background-color: #0056b3;
 }
 
-/* AI Results Panel */
+.image-controls label {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .ai-results-panel {
-  text-align: left;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f8f9fa;
 }
 
 .ai-results-panel h2 {
-  font-size: 22px;
-  color: #00f2fe;
-  margin-bottom: 15px;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
-.ai-results-panel div {
-  margin-bottom: 10px;
-  color: #e0e0e0;
-  font-size: 16px;
+.ai-confidence-score,
+.detected-anomalies,
+.cell-density,
+.heatmap {
+  margin-bottom: 20px;
 }
 
+.heatmap img {
+  width: 100%;
+  height: auto;
+}
 
 .share-download-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
   margin-top: 20px;
 }
 
-/* Styling for Share and Download Buttons */
 .share-case-button,
 .download-button {
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  padding: 10px 20px;
+  background-color: #28a745;
   color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  margin-right: 10px;
 }
 
 .share-case-button:hover,
 .download-button:hover {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
-  transform: translateY(-2px);
-}
-
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .analysis-head {
-    font-size: 2rem;
-  }
-  .image-controls {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .share-download-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .share-case-button,
-  .download-button {
-    width: 100%;
-  }
+  background-color: #218838;
 }

@@ -1,74 +1,51 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../api';
+import axios from 'axios';
 import './SignIn.css';
 
+const API_URL = "http://127.0.0.1:8000/auth/signin"; // FastAPI backend URL
+
 const SignIn = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      const response = await login(formData);
-      localStorage.setItem('token', response.access_token);
-      localStorage.setItem('email', formData.email);
-      navigate('/home'); // Navigate to the home page
+      const response = await axios.post(API_URL, { email, password });
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('email', email); // Store email in local storage
+      navigate('/home'); // Redirect to home page upon successful login
     } catch (error) {
-      setError(error.message || 'An error occurred during sign in');
+      setError(error.response?.data?.detail || 'An error occurred during sign in');
     }
-  };
-
-  const handleForgotPasswordClick = () => {
-    navigate('/forgot-password');
   };
 
   return (
     <div className="signin-container">
-      <h2>Welcome back</h2>
-      <p>Sign in to continue your journey</p>
-      {error && <p className="error-message">{error}</p>}
+      <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
-          name="email"
-          placeholder="Enter your email"
-          value={formData.email}
-          onChange={handleChange}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          name="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <div className="options">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <span onClick={handleForgotPasswordClick}>Forgot password?</span>
-        </div>
         <button type="submit">Sign In</button>
       </form>
-      <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

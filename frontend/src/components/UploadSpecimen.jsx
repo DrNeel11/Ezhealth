@@ -4,6 +4,8 @@ import axios from 'axios';
 import BottomNavBar from './BottomNavBar';
 import './UploadSpecimen.css';
 
+const API_URL = "http://127.0.0.1:8000/api/upload"; // FastAPI backend URL
+
 const UploadSpecimen = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -13,6 +15,7 @@ const UploadSpecimen = () => {
   const [gender, setGender] = useState('');
   const [specimenType, setSpecimenType] = useState('');
   const [uploadStatus, setUploadStatus] = useState('');
+  const [error, setError] = useState('');
 
   const handleFileSelect = (event) => {
     const file = event.target.files[0];
@@ -31,7 +34,13 @@ const UploadSpecimen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setError('');
+
+    if (!selectedFile) {
+      setError('Please select a file to upload');
+      return;
+    }
+
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
@@ -40,27 +49,20 @@ const UploadSpecimen = () => {
       formData.append('gender', gender);
       formData.append('specimenType', specimenType);
 
-      const response = await fetch('http://127.0.0.1:8000/images/upload', {
-        method: 'POST',
+      const response = await axios.post(API_URL, formData, {
         headers: {
+          'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body: formData
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Upload failed');
-      }
-
-      const data = await response.json();
       setUploadStatus('success');
-      navigate('/analysis', { state: { imageData: data } });
+      navigate('/analysis', { state: { result: response.data } });
     } catch (error) {
       setUploadStatus('error');
-      console.error('Upload error:', error);
+      setError(error.response?.data?.detail || 'An error occurred during file upload');
     }
-};
+  };
 
   return (
     <div className="upload-specimen-container">
@@ -142,6 +144,7 @@ const UploadSpecimen = () => {
         </button>
       </div>
       {uploadStatus && <p>{uploadStatus}</p>}
+      {error && <p className="error-message">{error}</p>}
       <BottomNavBar />
     </div>
   );
